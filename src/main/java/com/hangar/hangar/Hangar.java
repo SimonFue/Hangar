@@ -26,10 +26,23 @@ public class Hangar implements Cloneable, Comparable<Hangar> {
     public double obtenerArea() { return area; }
     public java.util.Date obtenerFecha() { return primerUso; }
     
+    /*
     public Object clone() throws CloneNotSupportedException {
         Hangar copiaHangar = (Hangar)super.clone();
         copiaHangar.primerUso = (java.util.Date)(primerUso.clone());
         return copiaHangar;
+    }
+    */
+    
+    @Override
+    public Object clone() {
+        try {
+            Hangar hangarCopia = (Hangar)super.clone();
+            hangarCopia.primerUso = (java.util.Date)(primerUso.clone());
+            return hangarCopia;
+        } catch (CloneNotSupportedException error) {
+            return null;
+        }
     }
     
     @Override
